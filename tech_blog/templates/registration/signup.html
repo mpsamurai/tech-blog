@@ -1,0 +1,31 @@
+{% extends "base_bootstrap4.html" %}
+{% load staticfiles %}
+{% block css %}
+    <link href="{% static 'css/authentication_style.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<form class="form-signin" method="POST" action="#">
+    <div class="form-group">
+        <div class="form-control" style="min-width: 50vh; margin:auto; background-color: #f8f9fa !important;">
+        <h1 class="h3 mb-3 font-weight-normal">新規登録画面</h1>
+            <hr>
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="input-signup">
+                <label class="control-label">{{ field.label }}<span class="form-require"> 必須</span></label>
+                {{ field }}
+                {{ field.errors }}
+                </div>
+                <br>
+            {% endfor %}
+            <button class="btn btn-lg btn-danger btn-block" type="submit" value="login">登録</button>
+            <div class="text-right">
+                <p>
+                <a href="/" target="_blank">ログイン画面へ戻る <i class="icon-arrow-right"></i></a>
+                </p>
+            </div>
+            {% csrf_token %}
+        </div>
+    </div>
+</form>
+{% endblock %}
