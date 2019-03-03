@@ -1,0 +1,37 @@
+{% extends "base_bootstrap4.html" %}
+{% load staticfiles %}
+{% block css %}
+    <link href="{% static 'css/authentication_style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-social.css' %} rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <form class="form-signin" method="POST">
+        <div class="form-group">
+            <div class="form-control" style="min-width: 50vh; margin:auto; background-color: #f8f9fa !important;">
+                <h1 class="h3 mb-3 font-weight-normal">ログイン画面</h1>
+                <hr>
+                <div class="input-group">
+                    <p>アカウントをお持ちでない方はこちら</p>
+                    <a class="btn btn-lg btn-info btn-block" href="{% url 'authentications:user_create' %}" role="button">新規登録</a>
+                </div>
+                <hr>
+                <div class="input-group">
+                    <a class="btn btn-lg btn-block btn-github" href="{% url 'authentications:begin' 'github' %}" style="padding: 0.88rem 1rem; border-radius:5px; font-size: 1.25rem;"><i class="fab fa-github pr-1"></i> GitHubでログイン</a>
+                </div>
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                    {{ field }}
+                    {{ field.errors }}
+                    <br>
+                {% endfor %}
+                <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
+                <a href="{% url 'authentications:password_reset' %}">パスワードをお忘れの方 </a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'authentications:password_change' %}"> パスワードの変更</a>
+                {% else %}
+                {% endif %}
+                {% csrf_token %}
+            </div>
+        </div>
+    </form>
+{% endblock %}

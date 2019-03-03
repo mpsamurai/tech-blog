@@ -1,0 +1,78 @@
+.input-group {
+    margin: 5px 0px;
+    padding-bottom: 2vh;
+}
+.input-group p {
+    margin: auto;
+}
+.addon-github {
+    background-color: #444444;
+    border: none;
+    border-radius: 2px 0px 0px 2px;
+    color: #fff;
+}
+a .btn-github {
+    border-radius:5px;
+    font-size: 1.25rem;
+}
+.btn-github {
+    background-color: #444444;
+    color: #fff;
+    border-radius: 0px 2px 2px 0px;
+    font-size: 15px;
+}
+.btn-github:hover {
+    background-color: #242424;
+    color: #fff;
+    border-radius: 0px 2px 2px 0px;
+    font-size: 15px;
+}
+.btn-primary {
+    border-radius: 2px;
+    background-color: #23a9f6;
+    border-color: #23a9f6;
+    margin: 10px 0px;
+}
+p {
+    color: #aebbcb;
+}
+a {
+    color: #23a9f6;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+    .divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+}
+.form-signin {
+    min-width: 50vh;
+    max-width: 60vh;
+    height: 100vh;
+}
+p {
+    color: #aebbcb;
+}
+a {
+    color: #23a9f6;
+}
+.input-signup {
+    text-align: left;
+}
+.control-label {
+    padding-right: 0vh;
+}
+.form-require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+}
+.text-right {
+    margin: 40px 0 0;
+}
