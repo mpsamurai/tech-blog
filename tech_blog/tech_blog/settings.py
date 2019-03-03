@@ -167,5 +167,7 @@ EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
 AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
+FROM_EMAIL=env('FROM_EMAIL')
+
 # カスタムユーザー設定
 AUTH_USER_MODEL = 'authentications.CustomUser'
