@@ -1,4 +1,5 @@
-"""tech_blog URL Configuration
+"""user_authentication URL Configuration
+>>>>>>> fd2b7845c3d137df0af0a09fb07e08054f1d2bda
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -14,9 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
-    path('', include('blog.urls')),
     path('admin/', admin.site.urls),
+    path('', include('authentications.urls')),
 ]
