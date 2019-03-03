@@ -11,9 +11,9 @@ class ArticleTag(models.Model):
 
 
 class Article(models.Model):
-    image = models.ImageField(upload_to='uploads/news/article/image')
+    image = models.ImageField(upload_to='uploads/blog/article/image')
     thumbnail = models.ImageField(
-        upload_to='uploads/news/article/thumbnail', default='')
+        upload_to='uploads/blog/article/thumbnail', default='')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(default=timezone.now, blank=True)
     title = models.CharField(max_length=70, default='')
@@ -29,7 +29,7 @@ class Article(models.Model):
 
 class Top(models.Model):
     image = models.ImageField(
-        upload_to='uploads/news/top/image', null=True, blank=True)
+        upload_to='uploads/blog/top/image', null=True, blank=True)
     title = models.CharField(max_length=32)
     update_at = models.DateField(auto_now=True)
     is_used = models.BooleanField(default=False)
