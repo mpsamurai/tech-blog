@@ -1,0 +1,94 @@
+{% extends "article_base.html" %}
+
+{% block title %}
+NEWS
+{% endblock %}
+
+{% block metadata %}
+{% load static %}
+<link rel="stylesheet" href='{% static "blog/css/blog_detail.css" %}'>
+{% endblock %}
+
+{% block content %}
+<main class="content">
+    <section class="article-section">
+        <article class="article">
+            <div class="top-img">
+                <img src='{{ article.image.url }}' alt="{{ article.title }}">
+                <div class="page-name">{{ pageName }}</div>
+            </div>
+            <div class="article-description">
+                <div class="article-wrap">
+                    <div class="article-head">
+                        <time class="date">{{ article.updated_date | date:"Y/m/d f" }}</time>
+                        <h1 class="article-title">{{ article.title }}</h1>
+                        <div class="tag-area">
+                            <p class="title">トピック</p>
+                            <ul class="tag-list">
+                                {% for tag in article.tags.all %}
+                                {% if tag.name in tag_names %}
+                                <li class="current"><a href='{% url "blog:index" %}?tag={{ tag.name }}#taglist'>{{
+                                    tag.name }} </a></li>
+                                {% else %}
+                                <li><a href='{% url "blog:index" %}?tag={{ tag.name }}#taglist'>{{ tag.name }} </a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="article-body">
+                        <p id="detail"></p>
+                    </div>
+                </div>
+                <div class="in-charge">
+                    <p class="text">この人が書きました</p>
+                    {% for writer in writers %}
+                    <div class="img-wrap"><img src='{{ writer.image.url }}' alt="{{ writer.name }}"></div>
+                    <p class="name">{{ writer.name }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="btn-wrap">
+                <a href='{% url "blog:index" %}'>NEWSに戻る</a>
+            </div>
+        </article>
+    </section>
+    <section class="related-article">
+        <div class="tag-area">
+            <p class="title">関連記事</p>
+        </div>
+        <div class="blog-card-list">
+            {% for page in pages %}
+            <article class="blog-card-list-item">
+                <a href='{% url "blog:article" page.id %}'>
+                    <div class="img-wrap"><img src='{{ page.image.url }}' alt="{{ page.title }}"></div>
+                    <div class="description">
+                        <time class="date">{{ page.updated_date|date:"Y/m/d f"}}</time>
+                        <h3 class="blog-title">{{ page.title|truncatechars:"19" }}</h3>
+                        <div class="blog-tags-wrap">
+                         <div class="blog-tags">
+                          <div class="tags"></div>
+                              {% for tag in page.tags.all %}
+                               <li>
+                                <a href='{% url "blog:index" %}?tag={{ tag.name }}#taglist'>{{ tag.name }}</a>
+                               </li>
+                              {% endfor %}
+                         </div>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block script %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/marked.min.js' %}"></script>
+<script type="text/javascript">
+    document.getElementById('detail').innerHTML = marked(`{{ article_content | safe }}`);
+</script>
+{% endblock %}

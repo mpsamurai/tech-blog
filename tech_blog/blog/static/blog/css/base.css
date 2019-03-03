@@ -1,0 +1,37 @@
+.box21{
+    padding: 0.5em 1em;
+    background: -moz-linear-gradient(#ffb03c, #ff708d);
+    background: -webkit-linear-gradient(#ffb03c, #ff708d);
+    background: linear-gradient(to right, #ffb03c, #ff708d);
+    color: #FFF;
+}
+
+.box21 p {
+    margin: 0; 
+    padding: 0;
+}
+
+img{
+   max-width: 300px;
+   height: auto;
+}
+
+.s1 {
+	color: #444;
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+}
+.s1:before, .s1:after {
+	content: "";
+	flex-grow: 1;
+	height: 1px;
+	background: #444;
+	display: block;
+}
+.s1:before {
+	margin-right: .4em;
+}
+.s1:after {
+	margin-left: .4em;
+}

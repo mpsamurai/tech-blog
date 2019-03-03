@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+NEWS
+{% endblock %}
+
+{% block metadata %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="content">
+  <div id="taglist"></div>
+  {% with "トピック" as tag_title %}
+  {% include "tags.html" %}
+  {% endwith %}
+  <section class="blog-section">
+    <div class="blog-card-list">
+      {% for data in page %}
+      <article class="blog-card-list-item">
+        <a href='{% url "blog:article" data.id %}'>
+          <div class="img-wrap">
+            <img src='{{ data.image.url }}' alt="{{ data.title }}">
+          </div>
+          <div class="description">
+            <time class="date">{{ data.updated_date|date:"Y/m/d f" }}</time>
+            <h3 class="blog-title">{{ data.title }}</h3>
+            <div class="blog-tags-wrap">
+              <div class="blog-tags">
+                <div class="tags"></div>
+                <ul>
+                  {% for tag in data.tags.all %}
+                  <li>
+                    <a href='?tag={{ tag.name }}#taglist'>{{ tag.name }} </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+<div>
+  {% include "pagination.html" %}
+</div>
+{% endblock %}
