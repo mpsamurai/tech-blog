@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentications',
+    # 'authentications',
     'widget_tweaks',
     'social_django',
     'django_ses',
@@ -170,4 +170,4 @@ AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 FROM_EMAIL=env('FROM_EMAIL')
 
 # カスタムユーザー設定
-AUTH_USER_MODEL = 'authentications.CustomUser'
+# AUTH_USER_MODEL = 'authentications.CustomUser'
