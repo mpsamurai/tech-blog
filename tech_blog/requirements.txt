@@ -22,7 +22,7 @@ pycparser==2.19
 PyJWT==1.7.1
 python3-openid==3.1.0
 pytz==2018.5
-requests==2.19.1
+requests==2.21.0
 requests-oauthlib==1.2.0
 simplejson==3.16.0
 six==1.12.0
